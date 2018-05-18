@@ -124,6 +124,16 @@ fi
 sudo make install
 cd ..
 
+# rtsp -server
+cd gst-rtsp-server
+git checkout -t origin/$BRANCH || true
+sudo make uninstall || true
+git pull
+./autogen.sh --disable-gtk-doc
+make
+sudo make install
+cd ..
+
 # python bindings
 cd gst-python
 git checkout -t origin/$BRANCH || true
