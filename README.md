@@ -13,3 +13,5 @@ https://anongit.freedesktop.org/git/gstreamer/
 
 https://github.com/davibe/gstreamer-docker/blob/master/Dockerfile
 
+# Search Text in Any File
+grep -rnw '/path/to/somewhere/' -e 'pattern'

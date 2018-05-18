@@ -1,7 +1,7 @@
 #!/bin/bash --debugger
 set -e
 
-BRANCH="master"
+BRANCH="1.14"
 if grep -q BCM2708 /proc/cpuinfo; then
     echo "RPI BUILD!"
     RPI="1"
@@ -27,7 +27,7 @@ sudo apt-get install -y --force-yes build-essential autotools-dev automake autoc
                                     libshout3-dev libjpeg-dev libaa1-dev libflac-dev libdv4-dev \
                                     libtag1-dev libwavpack-dev libpulse-dev libsoup2.4-dev libbz2-dev \
                                     libcdaudio-dev libdc1394-22-dev ladspa-sdk libass-dev \
-                                    libcurl4-gnutls-dev libdca-dev libdirac-dev libdvdnav-dev \
+                                    libcurl4-gnutls-dev libdca-dev libdvdnav-dev \
                                     libexempi-dev libexif-dev libfaad-dev libgme-dev libgsm1-dev \
                                     libiptcdata0-dev libkate-dev libmimic-dev libmms-dev \
                                     libmodplug-dev libmpcdec-dev libofa0-dev libopus-dev \
@@ -47,15 +47,17 @@ cd src
 cd gstreamer
 
 # get repos if they are not there yet
-[ ! -d gstreamer ] && git clone git://anongit.freedesktop.org/git/gstreamer/gstreamer
-[ ! -d gst-plugins-base ] && git clone git://anongit.freedesktop.org/git/gstreamer/gst-plugins-base
-[ ! -d gst-plugins-good ] && git clone git://anongit.freedesktop.org/git/gstreamer/gst-plugins-good
-[ ! -d gst-plugins-bad ] && git clone git://anongit.freedesktop.org/git/gstreamer/gst-plugins-bad
-[ ! -d gst-plugins-ugly ] && git clone git://anongit.freedesktop.org/git/gstreamer/gst-plugins-ugly
-[ ! -d gst-libav ] && git clone git://anongit.freedesktop.org/git/gstreamer/gst-libav
-[ ! -d gst-omx ] && git clone git://anongit.freedesktop.org/git/gstreamer/gst-omx
-[ ! -d gst-python ] && git clone git://anongit.freedesktop.org/git/gstreamer/gst-python
-[ ! $RPI ] && [ ! -d gstreamer-vaapi ] && git clone git://gitorious.org/vaapi/gstreamer-vaapi.git
+pwd
+[ ! -d gstreamer ] && git clone https://github.com/GStreamer/gstreamer.git
+[ ! -d gst-plugins-base ] && git clone https://github.com/GStreamer/gst-plugins-base.git
+[ ! -d gst-plugins-good ] && git clone https://github.com/GStreamer/gst-plugins-good.git
+[ ! -d gst-plugins-bad ] && git clone https://github.com/GStreamer/gst-plugins-bad.git
+[ ! -d gst-plugins-ugly ] && git clone https://github.com/GStreamer/gst-plugins-ugly.git
+[ ! -d gst-rtsp-server ] && git clone https://github.com/GStreamer/gst-rtsp-server.git
+[ ! -d gst-libav ] && git clone https://github.com/GStreamer/gst-libav.git
+[ ! -d gst-omx ] && git clone https://github.com/GStreamer/gst-omx.git
+[ ! -d gst-python ] && git clone https://github.com/GStreamer/gst-python.git
+[ ! $RPI ] && [ ! -d gstreamer-vaapi ] && git clone https://github.com/GStreamer/gstreamer-vaapi.git
 
 export LD_LIBRARY_PATH=/usr/local/lib/
 # checkout branch (default=master) and build & install
