@@ -26,3 +26,7 @@ LD_LIBRARY_PATH=$LD_LIBRARY_PATH:<GST-INSTALLATION>/linux_x86_64/lib
 GST_PLUGIN_PATH=<GST-INSTALLATION>/linux_x86_64/lib
 PATH=$PATH:<GST-INSTALLATION>/linux_x86_64/lib
 
+#Python bindings - along with gst-python install,
+Following - http://pygobject.readthedocs.io/en/latest/getting_started.html
+sudo apt install python-gi python-gi-cairo python3-gi python3-gi-cairo gir1.2-gtk-3.0
+
