@@ -19,3 +19,10 @@ grep -rnw '/path/to/somewhere/' -e 'pattern'
 # Export variables
 set  - prefix = "/usr/local" - in file $HOME/.cerbero/cerbero.cbc
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+export GST_PLUGIN_PATH=/usr/local/lib
+
+# If unsure,
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:<GST-INSTALLATION>/linux_x86_64/lib
+GST_PLUGIN_PATH=<GST-INSTALLATION>/linux_x86_64/lib
+PATH=$PATH:<GST-INSTALLATION>/linux_x86_64/lib
+

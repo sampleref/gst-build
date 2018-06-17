@@ -30,6 +30,16 @@ RUN cd cerbero; ./cerbero-uninstalled build \
   gst-plugins-bad-1.0 gst-plugins-ugly-1.0
 
 RUN cd cerbero; ./cerbero-uninstalled build \
-  gst-libav-1.0 gst-rtsp-server-1.0 openh264
+  gst-libav-1.0 gst-rtsp-server-1.0 openh264 gst-python-1.0
+
+RUN git clone -b 1.14 https://github.com/GStreamer/gst-python.git \
+    && cd gst-python \
+    && export LD_LIBRARY_PATH=/cerbero/build/dist/linux_x86_64/lib \
+    && export PKG_CONFIG_PATH=/cerbero/build/dist/linux_x86_64/lib/pkgconfig \
+    && export GST_PLUGIN_PATH=/cerbero/build/dist/linux_x86_64/lib \
+    && export PATH=$PATH:/cerbero/build/dist/linux_x86_64/lib:/cerbero/build/dist/linux_x86_64 \
+    && ./autogen.sh \
+    && make \
+    && make install
 
 ENTRYPOINT ["/bin/bash"]
