@@ -1,0 +1,14 @@
+import os
+from cerbero.config import Platform, Architecture, Distro
+
+#packages_prefix = 'gstreamer-sdk'
+#packager = 'GStreamer SDK packagers <packages@gstreamer.com>'
+prefix = "/usr/local"
+
+#git_root = "git://anongit.freedesktop.org/gstreamer-sdk"
+
+# Uncomment to allow parallel builds
+# allow_parallel_build = True
+
+# Uncomment this to allow cross-building for another architecture
+# target_arch = Architecture.X86_64

@@ -15,3 +15,7 @@ https://github.com/davibe/gstreamer-docker/blob/master/Dockerfile
 
 # Search Text in Any File
 grep -rnw '/path/to/somewhere/' -e 'pattern'
+
+# Export variables
+set  - prefix = "/usr/local" - in file $HOME/.cerbero/cerbero.cbc
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
