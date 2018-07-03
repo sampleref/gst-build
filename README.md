@@ -15,6 +15,9 @@ https://anongit.freedesktop.org/git/gstreamer/
 
 https://github.com/davibe/gstreamer-docker/blob/master/Dockerfile
 
+# Compile example
+gcc webrtc-sendrecv.c $(pkg-config --cflags --libs gstreamer-webrtc-1.0 gstreamer-sdp-1.0 libsoup-2.4 json-glib-1.0) -o webrtc-sendrecv
+
 # Search Text in Any File
 grep -rnw '/path/to/somewhere/' -e 'pattern'
 
