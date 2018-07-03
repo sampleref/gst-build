@@ -7,23 +7,11 @@ RUN apt-get -y install python-software-properties apt-utils vim htop dpkg-dev \
 RUN apt-add-repository -y "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) multiverse"
 RUN apt-get update
 
-RUN apt-get install -y faac yasm
-RUN apt-get install -y python-setuptools sudo
-
-# create the ubuntu user
-RUN addgroup --system ubuntu
-RUN adduser --system --shell /bin/bash --gecos 'ubuntu' \
-  --uid 1000 --disabled-password --home /home/ubuntu ubuntu
-RUN adduser ubuntu sudo
-RUN echo ubuntu:ubuntu | chpasswd
-RUN echo "ubuntu ALL=NOPASSWD:ALL" >> /etc/sudoers
-USER ubuntu
-ENV HOME /home/ubuntu
-WORKDIR /home/ubuntu
+RUN apt-get install -y faac yasm python-setuptools
 
 # Git config is needed so that cerbero can cleanly fetch some git repos
-RUN git config --global user.email "ubuntu.user@xyz.com" \
-    && git config --global user.name "ubuntu" \
+RUN git config --global user.email "ndn.user@xyz.com" \
+    && git config --global user.name "ndn" \
     && git config --global url."https://".insteadOf git:// \
     && git config --global url."https://github.com/GStreamer".insteadOf git://anongit.freedesktop.org/gstreamer \
     && git config --global url."https://github.com/libav".insteadOf git://git.libav.org
@@ -68,5 +56,5 @@ RUN cd gst-rtsp-server; ./autogen.sh; make
 
 RUN git clone https://github.com/centricular/gstwebrtc-demos.git
 
-ADD key.pem /home/ubuntu/gstwebrtc-demos/signalling/key.pem
-ADD cert.pem /home/ubuntu/gstwebrtc-demos/signalling/cert.pem
+ADD key.pem gstwebrtc-demos/signalling/key.pem
+ADD cert.pem gstwebrtc-demos/signalling/cert.pem
