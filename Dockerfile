@@ -27,7 +27,7 @@ ENV PATH=$PATH:/usr/local/lib:/usr/local
 
 # build gstreamer 1.0 from cerbero source
 # the build commands are split so that docker can resume in case of errors
-RUN git clone https://github.com/gstreamer/cerbero
+RUN git clone -b 1.14 https://github.com/gstreamer/cerbero
 
 # hack: to pass "-y" argument to apt-get install launched by "cerbero bootstrap"
 RUN sed -i 's/sudo apt-get install/apt-get install -y/g' cerbero/cerbero/bootstrap/linux.py
@@ -48,13 +48,3 @@ RUN cd cerbero; ./cerbero-uninstalled build \
 RUN cd cerbero; rm -rf build/sources
 
 RUN cd cerbero; ldconfig
-
-# Examples
-RUN git clone https://github.com/GStreamer/gst-rtsp-server.git
-
-RUN cd gst-rtsp-server; ./autogen.sh; make
-
-RUN git clone https://github.com/centricular/gstwebrtc-demos.git
-
-ADD key.pem gstwebrtc-demos/signalling/key.pem
-ADD cert.pem gstwebrtc-demos/signalling/cert.pem
