@@ -18,7 +18,6 @@ RUN git config --global user.email "ndn.user@xyz.com" \
 
 RUN mkdir -p /root/.cerbero
 ADD cerbero.cbc /root/.cerbero/cerbero.cbc
-ADD nginx.conf /etc/nginx/nginx.conf
 
 ENV LD_LIBRARY_PATH=/usr/local/lib
 ENV PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
