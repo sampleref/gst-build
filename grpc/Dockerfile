@@ -23,6 +23,6 @@ RUN mkdir -p /temp \
     && cd /temp \
     && wget https://github.com/Kitware/CMake/releases/download/v3.12.4/cmake-3.12.4-Linux-x86_64.sh \
     && mkdir -p /opt/cmake \
-    && sh cmake-3.12.4-Linux-x86_64.sh --prefix=/opt/cmake \
+    && sh cmake-3.12.4-Linux-x86_64.sh --skip-license --prefix=/opt/cmake \
     && ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake
 
