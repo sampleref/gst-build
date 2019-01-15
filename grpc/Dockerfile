@@ -17,7 +17,7 @@ RUN cd grpc; git submodule update --init \
 RUN cd grpc/third_party/protobuf; make install
 
 # Latest CMake
-RUN apt purge --auto-remove cmake
+RUN apt -y purge --auto-remove cmake
 
 RUN mkdir -p /temp \
     && cd /temp \
